@@ -1,5 +1,5 @@
 public class MaquinaExpendedoraMejorada {
-    
+
     // El precio del billete
     private int precioBillete;
     // La cantidad de dinero que lleva metida el cliente actual
@@ -62,7 +62,7 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("# " + precioBillete + " euros.");
             System.out.println("##################");
             System.out.println();         
-    
+
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
@@ -70,7 +70,30 @@ public class MaquinaExpendedoraMejorada {
         }
         else {
             System.out.println("Necesitas introducir " + (precioBillete - balanceClienteActual) + " euros mas!");
-                    
+
+        }            
+    }
+    
+    public void imprimirBillete2() {
+        int cantidadDeDineroQueFalta;
+        cantidadDeDineroQueFalta = (precioBillete - balanceClienteActual);
+        if (cantidadDeDineroQueFalta <= 0) {        
+            // Simula la impresion de un billete
+            System.out.println("##################");
+            System.out.println("# Billete de tren:");
+            System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
+            System.out.println("# " + precioBillete + " euros.");
+            System.out.println("##################");
+            System.out.println();         
+
+            // Actualiza el total de dinero acumulado en la maquina
+            totalDineroAcumulado = totalDineroAcumulado + precioBillete;
+            // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
+            balanceClienteActual = balanceClienteActual - precioBillete;
+        }
+        else {
+            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
+
         }            
     }
     
@@ -83,5 +106,6 @@ public class MaquinaExpendedoraMejorada {
         cantidadDeDineroADevolver = balanceClienteActual;
         balanceClienteActual = 0;
         return cantidadDeDineroADevolver;
-    } 
+    }
 }
+
