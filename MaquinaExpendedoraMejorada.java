@@ -24,6 +24,15 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
     }
 
+    /** Crea una maquina expendedora de billetes de tren con el
+     *  precio del billete, estacion de origen y de destino.
+     */
+    public MaquinaExpendedoraMejorada() {
+        precioBillete = 12;
+        estacionOrigen = "León";
+        estacionDestino = "Sevilla";
+    }
+    
     /**
      * Devuelve el precio del billete
      */
