@@ -10,8 +10,7 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
-    // Se vacía todo el dinero de la máquina
-    private int vaciarDineroDeLaMaquina;
+
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
@@ -40,11 +39,11 @@ public class MaquinaExpendedoraMejorada {
      * Vacía todo el dinero de la máquina
      */
     public int getVaciarDineroDeLaMaquina() {
-        int Conjuntodepositos;
-        Conjuntodepositos = totalDineroAcumulado + balanceClienteActual;
+        int conjuntodepositos;
+        conjuntodepositos = totalDineroAcumulado + balanceClienteActual;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
-        return Conjuntodepositos;
+        return conjuntodepositos;
     }
     
     /**
