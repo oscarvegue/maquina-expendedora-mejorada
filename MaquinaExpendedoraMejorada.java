@@ -31,6 +31,8 @@ public class MaquinaExpendedoraMejorada {
         precioBillete = 12;
         estacionOrigen = "León";
         estacionDestino = "Sevilla";
+        balanceClienteActual = 0;
+        totalDineroAcumulado = 0;
     }
     
     /**
