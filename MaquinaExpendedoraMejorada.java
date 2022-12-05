@@ -41,10 +41,7 @@ public class MaquinaExpendedoraMejorada {
     public int getVaciarDineroDeLaMaquina() {
         int conjuntodepositos;
         conjuntodepositos = totalDineroAcumulado + balanceClienteActual;
-        if (conjuntodepositos == 0){
-            conjuntodepositos = 0;
-        }
-        else if (0 < balanceClienteActual) {
+         if (0 < balanceClienteActual) {
             System.out.println("error operación en curso");
             conjuntodepositos = -1;
             
