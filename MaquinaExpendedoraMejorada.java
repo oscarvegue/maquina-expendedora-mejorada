@@ -10,7 +10,6 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
-
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
@@ -44,13 +43,28 @@ public class MaquinaExpendedoraMejorada {
          if (0 < balanceClienteActual) {
             System.out.println("error operación en curso");
             conjuntodepositos = -1;
-            
         }
         else {
             balanceClienteActual = 0;
             totalDineroAcumulado = 0;
         }
         return conjuntodepositos;
+    }
+    
+    /**
+     * Devuelve el número de billetes vendidos
+     */
+    public int getNumeroBilletesVendidos() {
+        int numeroBilletesVendidos = totalDineroAcumulado / precioBillete;
+        return numeroBilletesVendidos;
+    }
+    
+    /**
+     * Imprimir los billete vendidos
+     */
+    public void imprimirNumeroBilletesVendidos() {
+        int numeroBilletesVendidos = totalDineroAcumulado / precioBillete;
+        System.out.println(numeroBilletesVendidos);
     }
     
     /**
