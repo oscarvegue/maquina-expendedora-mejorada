@@ -10,28 +10,32 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
+    // Tipo de la maquina
+    private String tipoMaquina;
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, String tipo) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
+        tipoMaquina = tipo;
     }
 
     /** Crea una maquina expendedora de billetes de tren con el
      *  precio del billete, estacion de origen y de destino.
      */
-    public MaquinaExpendedoraMejorada() {
+    public MaquinaExpendedoraMejorada(String tipo) {
         precioBillete = 12;
         estacionOrigen = "León";
         estacionDestino = "Sevilla";
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
+        tipoMaquina = tipo;
     }
     
     /**
@@ -56,6 +60,16 @@ public class MaquinaExpendedoraMejorada {
      */
     public int getNumeroBilletesVendidos() {
         int numeroBilletesVendidos = totalDineroAcumulado / precioBillete;
+        if (tipoMaquina == "premio"){
+            System.out.println("tienes 3€ de descuento en peluqueria Manolo");
+        }
+        else if (tipoMaquina == "normal"){
+            
+        }
+        else {
+            System.out.println("error tipo de maquina no válido");
+            numeroBilletesVendidos = 0;
+        }
         return numeroBilletesVendidos;
     }
     
@@ -116,7 +130,13 @@ public class MaquinaExpendedoraMejorada {
         else {
             System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
 
-        }            
+        }     
+        
+        if (tipoMaquina == "premio"){
+            System.out.println("tienes 3€ de descuento en peluqueria Manolo");
+        }
+        else {
+        }
     }
     
     /**
