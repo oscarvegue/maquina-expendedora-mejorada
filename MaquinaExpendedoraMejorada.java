@@ -60,16 +60,6 @@ public class MaquinaExpendedoraMejorada {
      */
     public int getNumeroBilletesVendidos() {
         int numeroBilletesVendidos = totalDineroAcumulado / precioBillete;
-        if (tipoMaquina == "premio"){
-            System.out.println("tienes 3€ de descuento en peluqueria Manolo");
-        }
-        else if (tipoMaquina == "normal"){
-            
-        }
-        else {
-            System.out.println("error tipo de maquina no válido");
-            numeroBilletesVendidos = 0;
-        }
         return numeroBilletesVendidos;
     }
     
@@ -126,17 +116,15 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
+            
+             if (tipoMaquina == "premio"){
+            System.out.println("tienes 3€ de descuento en peluqueria Manolo");
         }
+    }
         else {
             System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
 
         }     
-        
-        if (tipoMaquina == "premio"){
-            System.out.println("tienes 3€ de descuento en peluqueria Manolo");
-        }
-        else {
-        }
     }
     
     /**
