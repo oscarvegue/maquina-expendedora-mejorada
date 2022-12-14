@@ -12,30 +12,34 @@ public class MaquinaExpendedoraMejorada {
     private String estacionDestino;
     // Tipo de la maquina
     private String tipoMaquina;
+    // Numero maximo de billetes que tiene la máquina
+    private int numeroMaximoBilletes;
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, String tipo) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, String tipo,int maximoBilletes) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
         tipoMaquina = tipo;
+        numeroMaximoBilletes = maximoBilletes;
     }
 
     /** Crea una maquina expendedora de billetes de tren con el
      *  precio del billete, estacion de origen y de destino.
      */
-    public MaquinaExpendedoraMejorada(String tipo) {
+    public MaquinaExpendedoraMejorada(String tipo,int maximoBilletes) {
         precioBillete = 12;
         estacionOrigen = "León";
         estacionDestino = "Sevilla";
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         tipoMaquina = tipo;
+        numeroMaximoBilletes = maximoBilletes;
     }
     
     /**
@@ -89,12 +93,18 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-        if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+        int numeroBilletesVendidos = totalDineroAcumulado / precioBillete;
+        if (numeroMaximoBilletes > numeroBilletesVendidos) {
+            if (cantidadIntroducida > 0) {
+                balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            }
+            else {
+                System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
+        }
         }
         else {
-            System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-        }        
+            System.out.println("error no quedan mas billetes");
+        }
     }
 
     /**
@@ -103,7 +113,9 @@ public class MaquinaExpendedoraMejorada {
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta;
         cantidadDeDineroQueFalta = (precioBillete - balanceClienteActual);
-        if (cantidadDeDineroQueFalta <= 0) {        
+        int numeroBilletesVendidos = totalDineroAcumulado / precioBillete;
+        if (numeroMaximoBilletes > numeroBilletesVendidos) {
+            if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
             System.out.println("# Billete de tren:");
@@ -116,17 +128,18 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
-            
-             if (tipoMaquina == "premio"){
-            System.out.println("tienes 3€ de descuento en peluqueria Manolo");
+            }
+            else {
+            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
+            }
+            if (tipoMaquina == "premio"){
+                System.out.println("tienes 3€ de descuento en peluqueria Manolo");
+                }
+        }
+        else {
+            System.out.println("error no quedan mas billetes");
         }
     }
-        else {
-            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
-
-        }     
-    }
-    
     /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
